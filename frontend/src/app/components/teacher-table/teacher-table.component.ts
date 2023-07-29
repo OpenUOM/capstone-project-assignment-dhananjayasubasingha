@@ -22,24 +22,24 @@ export class TeacherTableComponent implements OnInit {
   }
 
   addNewTeacher() {
-    this.router.navigate(['addTeacher'])
+    this.router.navigate(['addTeacher']);
   }
 
   editTeacher(id) {
     const navigationExtras: NavigationExtras = {
       state: {
-        id: id
-      }
+        id: id,
+      },
     };
-    this.router.navigate(['editTeacher'], navigationExtras)
+    this.router.navigate(['editTeacher'], navigationExtras);
   }
 
   initializeDB(){
     this.service.initializeDB().subscribe((response) => {
-      console.log('DB is Initialized')
+      console.log('DB is Initialized');
     }, (error) => {
-      console.log('ERROR - ', error)
-    })
+      console.log('ERROR - ', error);
+    });
   }
 
   getTeacherData() {
@@ -47,8 +47,8 @@ export class TeacherTableComponent implements OnInit {
     this.service.getTeacherData().subscribe((response) => {
       this.teacherData = Object.keys(response).map((key) => [response[key]]);
     }, (error) => {
-      console.log('ERROR - ', error)
-    })
+      console.log('ERROR - ', error);
+    });
   }
 
   getStudentData() {
@@ -56,8 +56,8 @@ export class TeacherTableComponent implements OnInit {
     this.service.getStudentData().subscribe((response) => {
       this.teacherData = response;
     }, (error) => {
-      console.log('ERROR - ', error)
-    })
+      console.log('ERROR - ', error);
+    });
   }
 
   search(value) {
@@ -67,7 +67,7 @@ export class TeacherTableComponent implements OnInit {
     } else {
       let b = this.teacherData.filter((teacher) => {
         if (teacher[0].name.toLowerCase().indexOf(value) > -1) {
-          foundItems.push(teacher)
+          foundItems.push(teacher);
         }
       });
       this.teacherData = foundItems;
@@ -76,10 +76,10 @@ export class TeacherTableComponent implements OnInit {
 
   deleteTeacher(itemid) {
     const test = {
-      id: itemid
+      id: itemid;
     }
     this.service.deleteTeacher(test).subscribe((response) => {
-      this.getTeacherData()
-    })
+      this.getTeacherData();
+    });
   }
 }
