@@ -27,7 +27,7 @@ export class AddNewTeacherComponent implements OnInit {
       this.router.navigate([''])
     },(error)=>{
       console.log('ERROR - ', error)
-    })
+    });
   }
 
 }
