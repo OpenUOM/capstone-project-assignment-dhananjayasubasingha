@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, NavigationExtras } from '@angular/router';
-import { faTrash, faPlus, faPenSquare } from '@fortawesome/free-solid-svg-icons';
+import { 
+  faTrash,
+  faPlus,
+  faPenSquare, 
+} from '@fortawesome/free-solid-svg-icons';
 import { AppServiceService } from '../../app-service.service';
 @Component({
   selector: 'app-teacher-table',
@@ -35,7 +39,8 @@ export class TeacherTableComponent implements OnInit {
   }
 
   initializeDB(){
-    this.service.initializeDB().subscribe((response) => {
+    this.service.initializeDB().subscribe(
+      (response) => {
       console.log('DB is Initialized');
     }, (error) => {
       console.log('ERROR - ', error);
@@ -44,7 +49,8 @@ export class TeacherTableComponent implements OnInit {
 
   getTeacherData() {
     this.selected = 'Teachers';
-    this.service.getTeacherData().subscribe((response) => {
+    this.service.getTeacherData().subscribe(
+      (response) => {
       this.teacherData = Object.keys(response).map((key) => [response[key]]);
     }, (error) => {
       console.log('ERROR - ', error);
@@ -53,7 +59,8 @@ export class TeacherTableComponent implements OnInit {
 
   getStudentData() {
     this.selected = 'Students';
-    this.service.getStudentData().subscribe((response) => {
+    this.service.getStudentData().subscribe(
+      (response) => {
       this.teacherData = response;
     }, (error) => {
       console.log('ERROR - ', error);
@@ -76,8 +83,8 @@ export class TeacherTableComponent implements OnInit {
 
   deleteTeacher(itemid) {
     const test = {
-      id: itemid;
-    }
+      id: itemid,
+    };
     this.service.deleteTeacher(test).subscribe((response) => {
       this.getTeacherData();
     });
