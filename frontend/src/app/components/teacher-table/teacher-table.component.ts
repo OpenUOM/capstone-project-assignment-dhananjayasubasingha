@@ -33,7 +33,7 @@ export class TeacherTableComponent implements OnInit {
     const navigationExtras: NavigationExtras = {
       state: {
         id: id,
-      },
+      }
     };
     this.router.navigate(['editTeacher'], navigationExtras);
   }
